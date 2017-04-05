@@ -1,0 +1,29 @@
+body {
+  background-image: url('image/bricks.jpg');
+}
+
+
+
+
+.columns {
+  font-size: 75px;
+  height: 700px;
+  color: $white-color;
+  text-align: center;
+}
+
+.board {
+  clear: both;
+  max-height: 55%;
+  max-width: 20%;
+  min-width: 375px;
+  overflow: auto;
+}
+
+.square {
+  border: 6px solid $white-color;
+  display: block;
+  float: left;
+  height: 118px;
+  width: 118px;
+}
