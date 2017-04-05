@@ -1,29 +1,48 @@
 body {
   background-image: url('image/bricks.jpg');
+  font-family: 'Finger Paint', cursive;
 }
 
-
-
-
-.columns {
-  font-size: 75px;
-  height: 700px;
-  color: $white-color;
+header {
+  color: $red-color;
+  font-size: 100px;
   text-align: center;
 }
 
-.board {
-  clear: both;
-  max-height: 55%;
-  max-width: 20%;
-  min-width: 375px;
-  overflow: auto;
+
+.columns {
+  color: $white-color;
+  font-size: 75px;
+  height: 700px;
+  text-align: center;
 }
 
-.square {
-  border: 6px solid $white-color;
-  display: block;
-  float: left;
-  height: 118px;
-  width: 118px;
+.playerx {
+  background-color: $red-color;
+  opacity: .5;
+}
+// X VS 0 title display for center column
+.x {
+  color: $red-color;
+  font-size: 120px;
+  text-decoration: underline;
+}
+
+.v {
+  color: $white-color;
+  font-size: 70px;
+  text-decoration: underline;
+}
+
+.o {
+  color: $blue-color;
+  font-size: 120px;
+  text-decoration: underline;
+}
+
+
+
+.playero {
+  background-color: $blue-color;
+  opacity: .5;
 }

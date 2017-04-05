@@ -1,0 +1,62 @@
+
+// TIC TAC TOE BOARD / SQUARES
+.board {
+  clear: both;
+  margin: 0 auto;
+  margin-top: 15%;
+  max-height: 55%;
+  max-width: 20%;
+  min-width: 375px;
+  overflow: auto;
+}
+
+.square {
+  display: block;
+  float: left;
+  height: 118px;
+  width: 118px;
+}
+
+// HOVER animation of cursor
+.square:hover {
+  cursor: pointer;
+  background-color: $yellow-color;
+}
+
+//tic tac toe border lines for board
+#square1 {
+  border-bottom: 6px solid $white-color;
+  border-right: 6px solid $white-color;
+}
+
+#square2 {
+  border-bottom: 6px solid $white-color;
+}
+
+#square3 {
+  border-bottom: 6px solid $white-color;
+  border-left: 6px solid $white-color;
+
+}
+
+#square4 {
+  border-bottom: 6px solid $white-color;
+  border-right: 6px solid $white-color;
+}
+
+#square5 {
+  border-bottom: 6px solid $white-color;
+}
+
+#square6 {
+  border-bottom: 6px solid $white-color;
+  border-left: 6px solid $white-color;
+}
+
+#square7 {
+  border-right: 6px solid $white-color;
+}
+
+#square9 {
+  border-left: 6px solid $white-color;
+}

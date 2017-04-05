@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags unless you know what you are doing -->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
+      <link href="https://fonts.googleapis.com/css?family=Finger+Paint" rel="stylesheet">
       <!-- Do not add `script` tags unless you know what you are doing -->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+<div class="col-xs-12 top">
+<header class="title">Tic Tac Toe </header>
+</div>
 
-<div class="col-xs-4 col-lg-4 columns">
+
+
+
+<div class="col-xs-4 col-lg-4 columns playerx">
   Player X
 </div>
 
 <div class="col-xs-4 col-lg-4 columns">
-  X V.S O
-
+  <span class="x"> X </span> <span class="v">V.S </span><span class="o">O</span>
 <div class="board">
-<div class="square">X</div>
-<div class="square">X</div>
-<div class="square">X</div>
-<div class="square">X</div>
-<div class="square">X</div>
-<div class="square">X</div>
-<div class="square">X</div>
-<div class="square">X</div>
-<div class="square">x</div>
+<div class="square" id="square1"></div>
+<div class="square" id="square2"></div>
+<div class="square" id="square3"></div>
+<div class="square" id="square4"></div>
+<div class="square" id="square5"></div>
+<div class="square" id="square6"></div>
+<div class="square" id="square7"></div>
+<div class="square" id="square8"></div>
+<div class="square" id="square9"></div>
 </div>
 </div>
 
-<div class="col-xs-4 col-lg-4 columns">
+<div class="col-xs-4 col-lg-4 columns playero">
   Player O
 </div>
