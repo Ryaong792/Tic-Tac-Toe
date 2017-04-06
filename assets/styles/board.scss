@@ -19,44 +19,44 @@
 
 // HOVER animation of cursor
 .square:hover {
-  cursor: pointer;
   background-color: $yellow-color;
+  cursor: pointer;
 }
 
 //tic tac toe border lines for board
-#sq1 {
+.sq1 {
   border-bottom: 6px solid $white-color;
   border-right: 6px solid $white-color;
 }
 
-#sq2 {
+.sq2 {
   border-bottom: 6px solid $white-color;
 }
 
-#sq3 {
+.sq3 {
   border-bottom: 6px solid $white-color;
   border-left: 6px solid $white-color;
 
 }
 
-#sq4 {
+.sq4 {
   border-bottom: 6px solid $white-color;
   border-right: 6px solid $white-color;
 }
 
-#sq5 {
+.sq5 {
   border-bottom: 6px solid $white-color;
 }
 
-#sq6 {
+.sq6 {
   border-bottom: 6px solid $white-color;
   border-left: 6px solid $white-color;
 }
 
-#sq7 {
+.sq7 {
   border-right: 6px solid $white-color;
 }
 
-#sq9 {
+.sq9 {
   border-left: 6px solid $white-color;
 }
