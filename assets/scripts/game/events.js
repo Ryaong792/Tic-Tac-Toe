@@ -6,6 +6,11 @@ const player2 = 'O'
 let currentPlayer = player1
 const tileObject = {[player1]: [], [player2]: []}
 
+function resetGame () {
+  $('.square').removeClass('.square')
+  $('.square').removeAttr
+  console.log(resetGame)
+}
 // currentTurn function that works out who goes first
 const currentTurn = function () {
   console.log(currentPlayer)

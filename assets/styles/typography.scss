@@ -9,8 +9,8 @@ header {
   text-align: center;
 }
 
-.top {
-  background-color: pink;
+.modal1 {
+  float: left;
 }
 
 .columns {
@@ -48,4 +48,11 @@ header {
 .playero {
   background-color: $blue-color;
   opacity: .5;
+}
+
+#reset {
+  background-color: $black-color;
+  height: 10%;
+  width: 20%;
+  font-size: 20px;
 }
