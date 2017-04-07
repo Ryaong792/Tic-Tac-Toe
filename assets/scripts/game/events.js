@@ -3,19 +3,21 @@
 const player1 = 'X'
 const player2 = 'O'
 // let board = new Array(9)
-let currentPlayer = 'X'
+let currentPlayer = player1
 const tileObject = {[player1]: [], [player2]: []}
 
 // currentTurn function that works out who goes first
 const currentTurn = function () {
   console.log(currentPlayer)
-  currentPlayer = currentPlayer === player1 ? player2 : player1
+  currentPlayer = (currentPlayer === player1) ? player2 : player1
+  console.log(currentPlayer)
   return currentPlayer
 }
 
 // start function that goes of the click event
 const start = function () {
-  $(this).html(currentTurn)
+  $(this).html(currentPlayer)
+  currentTurn()
   $(this).unbind('click')
 }
 // end of start click funtions **************
