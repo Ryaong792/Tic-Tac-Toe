@@ -3,12 +3,16 @@
 const player1 = 'X'
 const player2 = 'O'
 // let board = new Array(9)
+let usedTiles = []
 let currentPlayer = player1
 let tileObject = {[player1]: [], [player2]: []}
 
+// reset button and reset currentPlayer status to X and reset
+// arrays on tileObject to empty to reset the win fucntions
 const resetGame = function () {
   event.preventDefault()
   currentPlayer = player1
+  usedTiles = []
   tileObject = {[player1]: [], [player2]: []}
   $('.square').text('')
   $('.square').on('click', start)
@@ -28,6 +32,7 @@ const start = function () {
   currentTurn()
   $(this).unbind('click')
 }
+
 // end of start click funtions **************
 // start of winning combos
 const winningCombinations = [
@@ -101,6 +106,9 @@ const checkForWin = function (player, playerTiles) {
       break
     }
   }
+  if (usedTiles.length === 9) {
+    $('#draw').modal('show')
+  }
 }
 
 const setUpGameBoard = function () {
@@ -110,8 +118,14 @@ const setUpGameBoard = function () {
     const element = document.getElementById(elementID)
     element.addEventListener('click', updateCell)
   }
-  $('.square').on('click', start)
+  $
+  //$('.square').on('click', start)
+  $('.square').on('click', function (event) {
+    console.log($(this).text())
+  })
 }
+
+$('.sua')
 
 const updateCell = function () {
   // console.log(currentPlayer)
@@ -120,6 +134,8 @@ const updateCell = function () {
   console.log('this element id = ' + id)
   const index1 = id.split('-')
   const index = parseInt(index1[1])
+  // usedTiles and push the index of moves to array
+  usedTiles.push(index)
   tileObject[currentPlayer].push(index)
   console.log(currentPlayer, tileObject[currentPlayer], index)
   checkForWin(currentPlayer, tileObject[currentPlayer])
