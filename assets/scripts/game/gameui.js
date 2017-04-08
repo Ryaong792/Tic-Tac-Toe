@@ -8,7 +8,15 @@ const createGameSuccess = (data) => {
 const createGameFailure = (error) => {
   return error
 }
+const getGameSuccess = (data) => {
+  store.game = data.games
+  console.log('number of games ', data.games.length)
+  $('.stats').append(data.games.length)
+}
 
+const getGameFailure = (error) => {
+  return error
+}
 /*
 const store = require('../store')
 
@@ -49,5 +57,7 @@ const changePasswordFailure = (error) => {
 */
 module.exports = {
   createGameSuccess,
-  createGameFailure
+  createGameFailure,
+  getGameSuccess,
+  getGameFailure
 }

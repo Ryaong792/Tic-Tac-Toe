@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const game = require('../game/events.js')
 
 const signUpSuccess = (data) => {
   console.log(data)
@@ -13,6 +14,7 @@ const signUpFailure = (error) => {
 const signInSuccess = (response) => {
   console.log('signIn success ran. data is :', response)
   store.user = response.user
+  game.getGameOver()
 }
 
 const signInFailure = (error) => {

@@ -23,6 +23,12 @@ const updateGame = function (data) {
   gameapi.updateGame(data)
 }
 
+const getGameOver = function (data) {
+  gameapi.getGameOver(data)
+  .then(gameui.getGameSuccess)
+  .catch(gameui.getGameFailure)
+}
+
 // **************************
 // reset button and reset currentPlayer status to X and reset
 // arrays on tileObject to empty to reset the win fucntions
@@ -31,6 +37,7 @@ const resetGame = function () {
   currentPlayer = player1
   usedTiles = []
   tileObject = {[player1]: [], [player2]: []}
+  gameOver = false
   $('.square').text('')
   $('.square').on('click', start)
   console.log(resetGame)
@@ -122,11 +129,13 @@ const checkForWin = function (player, playerTiles) {
     if (count === 3) {
       declareAndLogWinner(player, currentCombo)
       gameOver = true
+      return gameOver
     }
   }
   if (usedTiles.length === 9) {
     $('#draw').modal('show')
     gameOver = true
+    return gameOver
   }
 }
 
@@ -166,5 +175,6 @@ module.exports = {
   updateCell,
   gameui,
   gameapi,
-  updateGame
+  updateGame,
+  getGameOver
 }
