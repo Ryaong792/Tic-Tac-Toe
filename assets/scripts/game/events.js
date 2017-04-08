@@ -6,9 +6,11 @@ const player2 = 'O'
 let currentPlayer = player1
 const tileObject = {[player1]: [], [player2]: []}
 
-function resetGame () {
-  $('.square').removeClass('.square')
-  $('.square').removeAttr
+const resetGame = function () {
+  event.preventDefault()
+  currentPlayer = player1
+  tileObject
+  $('.square').text('')
   console.log(resetGame)
 }
 // currentTurn function that works out who goes first
@@ -124,6 +126,7 @@ const updateCell = function () {
 }
 
 const addHandlers = () => {
+  $('#reset').on('click', resetGame)
 }
 
 module.exports = {
