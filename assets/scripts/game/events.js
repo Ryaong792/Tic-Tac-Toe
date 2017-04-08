@@ -4,13 +4,14 @@ const player1 = 'X'
 const player2 = 'O'
 // let board = new Array(9)
 let currentPlayer = player1
-const tileObject = {[player1]: [], [player2]: []}
+let tileObject = {[player1]: [], [player2]: []}
 
 const resetGame = function () {
   event.preventDefault()
   currentPlayer = player1
-  tileObject
+  tileObject = {[player1]: [], [player2]: []}
   $('.square').text('')
+  $('.square').on('click', start)
   console.log(resetGame)
 }
 // currentTurn function that works out who goes first
