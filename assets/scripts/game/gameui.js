@@ -8,6 +8,7 @@ const createGameSuccess = (data) => {
 const createGameFailure = (error) => {
   return error
 }
+
 /*
 const store = require('../store')
 

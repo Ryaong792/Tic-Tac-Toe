@@ -1,12 +1,14 @@
 'use strict'
 const gameui = require('./gameui.js')
 const gameapi = require('./gameapi.js')
+
 // const players = ['X', 'O']
 const player1 = 'X'
 const player2 = 'O'
+let gameOver = false
 // let board = new Array(9)
 let usedTiles = []
-let currentPlayer = player1
+let currentPlayer = 'X'
 let tileObject = {[player1]: [], [player2]: []}
 
 // API SHIT
@@ -17,9 +19,9 @@ const createGame = function () {
   .catch(gameui.createGameFailure)
 }
 
-
-
-
+const updateGame = function (data) {
+  gameapi.updateGame(data)
+}
 
 // **************************
 // reset button and reset currentPlayer status to X and reset
@@ -43,9 +45,26 @@ const currentTurn = function () {
 
 // start function that goes of the click event
 const start = function () {
-  $(this).html(currentPlayer)
-  currentTurn()
-  $(this).unbind('click')
+  // added if and or statement to stop the clicks
+  if (gameOver === false && $(this).text() !== 'X' && $(this).text() !== 'O') {
+    $(this).html(currentPlayer)
+    currentTurn()
+  // takes the ID for the game API
+    const id = ''
+    const index1 = id.split('-')
+    const index = parseInt(index1[1])
+
+    const gameObject = {
+      'game': {
+        'cell': {
+          'index': index,
+          'value': currentPlayer
+        },
+        'over': gameOver
+      }
+    }
+    updateGame(gameObject)
+  }
 }
 
 // end of start click funtions **************
@@ -81,22 +100,6 @@ let gameCellIds = [
   'box-8'
 ]
 
-const gameObject = {
-  'game': {
-    'id': 3,
-    'cells': ['', '', '', '', '', '', '', '', ''],
-    'over': false,
-    'player_x': {
-      'id': 1,
-      'email': 'and@and.com'
-    },
-    'player_o': {
-      'id': 2,
-      'email': 'ande@and.com'
-    }
-  }
-}
-
 const declareAndLogWinner = function (player, combo) {
   // Declare the winner and log the result here
   $(`#winner${player}`).modal('show')
@@ -118,11 +121,12 @@ const checkForWin = function (player, playerTiles) {
     })
     if (count === 3) {
       declareAndLogWinner(player, currentCombo)
-      break
+      gameOver = true
     }
   }
   if (usedTiles.length === 9) {
     $('#draw').modal('show')
+    gameOver = true
   }
 }
 
@@ -133,7 +137,6 @@ const setUpGameBoard = function () {
     const element = document.getElementById(elementID)
     element.addEventListener('click', updateCell)
   }
-  $('.square').on('click', start)
 }
 
 const updateCell = function () {
@@ -154,6 +157,7 @@ const updateCell = function () {
 const addHandlers = () => {
   $('#reset').on('click', resetGame)
   $('#create').on('click', createGame)
+  $('.square').on('click', start)
 }
 
 module.exports = {
@@ -161,5 +165,6 @@ module.exports = {
   setUpGameBoard,
   updateCell,
   gameui,
-  gameapi
+  gameapi,
+  updateGame
 }
