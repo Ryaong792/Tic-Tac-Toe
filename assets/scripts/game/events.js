@@ -1,4 +1,6 @@
 'use strict'
+const gameui = require('./gameui.js')
+const gameapi = require('./gameapi.js')
 // const players = ['X', 'O']
 const player1 = 'X'
 const player2 = 'O'
@@ -7,6 +9,19 @@ let usedTiles = []
 let currentPlayer = player1
 let tileObject = {[player1]: [], [player2]: []}
 
+// API SHIT
+const createGame = function () {
+  gameapi.createGame()
+// puts failure or success
+  .then(gameui.createGameSuccess)
+  .catch(gameui.createGameFailure)
+}
+
+
+
+
+
+// **************************
 // reset button and reset currentPlayer status to X and reset
 // arrays on tileObject to empty to reset the win fucntions
 const resetGame = function () {
@@ -118,14 +133,8 @@ const setUpGameBoard = function () {
     const element = document.getElementById(elementID)
     element.addEventListener('click', updateCell)
   }
-  $
-  //$('.square').on('click', start)
-  $('.square').on('click', function (event) {
-    console.log($(this).text())
-  })
+  $('.square').on('click', start)
 }
-
-$('.sua')
 
 const updateCell = function () {
   // console.log(currentPlayer)
@@ -144,10 +153,13 @@ const updateCell = function () {
 
 const addHandlers = () => {
   $('#reset').on('click', resetGame)
+  $('#create').on('click', createGame)
 }
 
 module.exports = {
   addHandlers,
   setUpGameBoard,
-  updateCell
+  updateCell,
+  gameui,
+  gameapi
 }
