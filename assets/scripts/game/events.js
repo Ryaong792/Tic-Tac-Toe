@@ -2,100 +2,30 @@
 const gameui = require('./gameui.js')
 const gameapi = require('./gameapi.js')
 
-// const players = ['X', 'O']
+// Lets of all 'const'
 const player1 = 'X'
 const player2 = 'O'
-let gameOver = false
-// let board = new Array(9)
-let usedTiles = []
-let currentPlayer = player1
-let tileObject = {[player1]: [], [player2]: []}
-
-// API SHIT
-const createGame = function () {
-  gameapi.createGame()
-// puts failure or success
-  .then(gameui.createGameSuccess)
-  .catch(gameui.createGameFailure)
-}
-
-const updateGame = function (data) {
-  gameapi.updateGame(data)
-}
-
-const getGameOver = function (data) {
-  gameapi.getGameOver(data)
-  .then(gameui.getGameSuccess)
-  .catch(gameui.getGameFailure)
-}
-
-// **************************
-// reset button and reset currentPlayer status to X and reset
-// arrays on tileObject to empty to reset the win fucntions
-const resetGame = function () {
-  event.preventDefault()
-  currentPlayer = player1
-  usedTiles = []
-  tileObject = {[player1]: [], [player2]: []}
-  gameOver = false
-  $('.square').text('')
-  $('.square').on('click', start)
-  console.log(resetGame)
-}
-// currentTurn function that works out who goes first
-const currentTurn = function () {
-  console.log(currentPlayer)
-  currentPlayer = (currentPlayer === player1) ? player2 : player1
-  console.log(currentPlayer)
-  return currentPlayer
-}
-
-// start function that goes of the click event
-const start = function () {
-  // added if and or statement to stop the clicks
-  if (gameOver === false && $(this).text() !== 'X' && $(this).text() !== 'O') {
-    $(this).html(currentPlayer)
-    currentTurn()
-  // takes the ID for the game API
-    const id = ''
-    const index1 = id.split('-')
-    const index = parseInt(index1[1])
-
-    const gameObject = {
-      'game': {
-        'cell': {
-          'index': index,
-          'value': currentPlayer
-        },
-        'over': gameOver
-      }
-    }
-    updateGame(gameObject)
-  }
-}
-
-// end of start click funtions **************
 // start of winning combos
 const winningCombinations = [
   // Horizontal
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
-
   // Vertical
   [0, 3, 6],
   [1, 4, 7],
   [2, 5, 8],
-
   // Diagonal
   [0, 4, 8],
   [2, 4, 6]
 ]
-
-//const usedTile = []
-
-// GAME API capture ************************
-let gameCellIds = [
+// LIST OF ALL 'let'
+let gameOver = false
+let usedTiles = []
+let currentPlayer = player1
+let playerArray = {[player1]: [], [player2]: []}
+// Game cells ID ******
+const gameCellIds = [
   'box-0',
   'box-1',
   'box-2',
@@ -106,22 +36,67 @@ let gameCellIds = [
   'box-7',
   'box-8'
 ]
+// server communications ****************** see game API
+// pulls new game from server (POST)
+const createGame = function () {
+  gameapi.createGame()
+  .then(gameui.createGameSuccess)
+  .catch(gameui.createGameFailure)
+}
+// send update of current game to server (PATCH)
+const updateGame = function (data) {
+  gameapi.updateGame(data)
+}
+// pulls total game played by user (GET)
+const getGameOver = function (data) {
+  gameapi.getGameOver(data)
+  .then(gameui.getGameSuccess)
+  .catch(gameui.getGameFailure)
+}
+// ***************************************************
 
-const declareAndLogWinner = function (player, combo) {
-  // Declare the winner and log the result here
-  $(`#winner${player}`).modal('show')
-  // $('#player2-score').
-  alert(`${player} wins`)
-  return
+// functions that goes of the on click event in addHandlers *********
+// Start funciton: starts on click, gather info for server, update server with
+// current game data
+const start = function () {
+  // added 'if' statemant to stop click events if game is over
+  // and if box has has a string "X or O" to not allow any clicks
+  if (gameOver === false && $(this).text() !== 'X' && $(this).text() !== 'O') {
+  // takes the info of current game and sends to server
+    const id = ''
+    const index1 = id.split('-')
+    const index = parseInt(index1[1])
+    const gameObject = {
+      'game': {
+        'cell': {
+          'index': index,
+          'value': currentPlayer
+        },
+        'over': gameOver
+      }
+    }
+    $(this).html(currentPlayer)
+    currentTurn()
+    updateGame(gameObject)
+  }
 }
 
-// Check if there is a win
+// currentTurn function that works out who goes first
+const currentTurn = function () {
+  currentPlayer = currentPlayer === player1 ? player2 : player1
+  // console.log(currentPlayer) been having issues with players not rotating
+  return currentPlayer
+}
+
+// ******************** CHECK FOR WIN LOGIC***********************
+// Check if there is a Win/Draw
 const checkForWin = function (player, playerTiles) {
+// 'if' statement to stop the wins/draw if game is over
   if (gameOver === true) {
-    alert("game is over")
+    alert('Game is over') // NEED TO CHANGE THIS ***********
     return
   }
-  // Check if the play has up to 3 tiles before moving on to
+  // for loop to loop through winning array and check for wins
   for (let i = 0; i < winningCombinations.length; i += 1) {
     const currentCombo = winningCombinations[i]
     let count = 0
@@ -130,10 +105,11 @@ const checkForWin = function (player, playerTiles) {
         count += 1
       }
     })
+    // if loops find count of 3 playerTiles that matches winning array to find win
     if (count === 3) {
       declareAndLogWinner(player, currentCombo)
-      gameOver = true
-      return false
+      gameOver = true // added to tell server game state and used to stop loops
+      return false  // breaks/stop loop after win.
     }
   }
   if (usedTiles.length === 9) {
@@ -142,7 +118,29 @@ const checkForWin = function (player, playerTiles) {
     return false
   }
 }
+// ********************* end of win logic ****************************
 
+// Declares and announce win/draw on modal ---
+const declareAndLogWinner = function (player, combo) {
+  // Declare the winner and log the result here
+  $(`#winner${player}`).modal('show')
+  return
+}
+// reset button and reset currentPlayer status to X and reset
+// arrays on playerArray to empty to reset the win fucntions
+// need to add server create game to button
+const startNewGame = function () {
+  event.preventDefault()
+  currentPlayer = player1
+  usedTiles = []
+  playerArray = {[player1]: [], [player2]: []}
+  gameOver = false
+  $('.square').text('')
+  console.log(startNewGame)
+}
+
+// *********** Game board setup tracks clicks to index and add
+// to Players Arrays
 const setUpGameBoard = function () {
   console.log('setUpGameBoard ran!')
   for (let i = 0; i < gameCellIds.length; i++) {
@@ -159,16 +157,17 @@ const updateCell = function () {
   console.log('this element id = ' + id)
   const index1 = id.split('-')
   const index = parseInt(index1[1])
-  // usedTiles and push the index of moves to array
+  // usedTiles and push the index of moves to array (total moves)
   usedTiles.push(index)
-  tileObject[currentPlayer].push(index)
-  console.log(currentPlayer, tileObject[currentPlayer], index)
-  checkForWin(currentPlayer, tileObject[currentPlayer])
+  playerArray[currentPlayer].push(index)
+  console.log(currentPlayer, playerArray[currentPlayer], index)
+  checkForWin(currentPlayer, playerArray[currentPlayer])
   // Check for used tiles here and restart the game
 }
 
 const addHandlers = () => {
-  $('#reset').on('click', resetGame)
+  $('#reset').on('click', startNewGame)
+  // need to add create game to StartNewGame
   $('#create').on('click', createGame)
   $('.square').on('click', start)
 }
@@ -176,9 +175,5 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
   setUpGameBoard,
-  updateCell,
-  gameui,
-  gameapi,
-  updateGame,
   getGameOver
 }
