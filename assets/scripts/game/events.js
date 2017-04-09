@@ -8,7 +8,7 @@ const player2 = 'O'
 let gameOver = false
 // let board = new Array(9)
 let usedTiles = []
-let currentPlayer = 'X'
+let currentPlayer = player1
 let tileObject = {[player1]: [], [player2]: []}
 
 // API SHIT
@@ -117,6 +117,10 @@ const declareAndLogWinner = function (player, combo) {
 
 // Check if there is a win
 const checkForWin = function (player, playerTiles) {
+  if (gameOver === true) {
+    alert("game is over")
+    return
+  }
   // Check if the play has up to 3 tiles before moving on to
   for (let i = 0; i < winningCombinations.length; i += 1) {
     const currentCombo = winningCombinations[i]
@@ -129,13 +133,13 @@ const checkForWin = function (player, playerTiles) {
     if (count === 3) {
       declareAndLogWinner(player, currentCombo)
       gameOver = true
-      return gameOver
+      return false
     }
   }
   if (usedTiles.length === 9) {
     $('#draw').modal('show')
     gameOver = true
-    return gameOver
+    return false
   }
 }
 
