@@ -1,4 +1,5 @@
 'use strict'
+
 const gameui = require('./gameui.js')
 const gameapi = require('./gameapi.js')
 
@@ -76,8 +77,8 @@ const start = function () {
       }
     }
     $(this).html(currentPlayer)
-    currentTurn()
     updateGame(gameObject)
+    $(this).unbind('click')
   }
 }
 
@@ -93,20 +94,22 @@ const currentTurn = function () {
 const checkForWin = function (player, playerTiles) {
 // 'if' statement to stop the wins/draw if game is over
   if (gameOver === true) {
-    $('#new').modal('show')
+    $('#game-over').modal('show')
     return
   }
   // for loop to loop through winning array and check for wins
   for (let i = 0; i < winningCombinations.length; i += 1) {
     const currentCombo = winningCombinations[i]
-    let count = 0
+    let winCombo = []
     playerTiles.forEach((index) => {
       if (currentCombo.indexOf(index) > -1) {
-        count += 1
+        if (winCombo.indexOf(index) === -1) {
+          winCombo.push(index)
+        }
       }
     })
     // if loops find count of 3 playerTiles that matches winning array to find win
-    if (count === 3) {
+    if (winCombo.length === 3) {
       declareAndLogWinner(player, currentCombo)
       gameOver = true // added to tell server game state and used to stop loops
       return false  // breaks/stop loop after win.
@@ -117,6 +120,7 @@ const checkForWin = function (player, playerTiles) {
     gameOver = true
     return false
   }
+  currentTurn()
 }
 // ********************* end of win logic ****************************
 
@@ -124,13 +128,14 @@ const checkForWin = function (player, playerTiles) {
 const declareAndLogWinner = function (player, combo) {
   // Declare the winner and log the result here
   $(`#winner${player}`).modal('show')
-  return
+  return false
 }
 // reset button and reset currentPlayer status to X and reset
 // arrays on playerArray to empty to reset the win fucntions
 // need to add server create game to button
 const startNewGame = function () {
   event.preventDefault()
+  $('.modal').modal('hide')
   currentPlayer = player1
   usedTiles = []
   playerArray = {[player1]: [], [player2]: []}
@@ -151,6 +156,10 @@ const setUpGameBoard = function () {
 }
 
 const updateCell = function () {
+  if (gameOver) {
+    $('#game-over').modal('show')
+    return false
+  }
   // console.log(currentPlayer)
   console.log('update cell this: ', this)
   const id = this.id
@@ -158,20 +167,20 @@ const updateCell = function () {
   const index1 = id.split('-')
   const index = parseInt(index1[1])
   // usedTiles and push the index of moves to array (total moves)
-  usedTiles.push(index)
-  playerArray[currentPlayer].push(index)
-  console.log(currentPlayer, playerArray[currentPlayer], index)
-  checkForWin(currentPlayer, playerArray[currentPlayer])
+  // this will check if the tile that player click doesn't exist
+  if (playerArray[currentPlayer].indexOf(index) === -1) {
+    usedTiles.push(index)
+    playerArray[currentPlayer].push(index)
+    checkForWin(currentPlayer, playerArray[currentPlayer])
   // Check for used tiles here and restart the game
+  }
 }
-
 const addHandlers = () => {
-  $('#reset').on('click', startNewGame)
-  // need to add create game to StartNewGame
+  $('.btn').on('click', startNewGame)
   $('#create').on('click', createGame)
   $('.square').on('click', start)
+  $('#reset').on('click', startNewGame)
 }
-
 module.exports = {
   addHandlers,
   setUpGameBoard,
