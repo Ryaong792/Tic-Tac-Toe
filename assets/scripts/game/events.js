@@ -78,8 +78,7 @@ const start = function () {
     }
     $(this).html(currentPlayer)
     updateGame(gameObject)
-    $(this).unbind('click')
-  }
+  } else return false
 }
 
 // currentTurn function that works out who goes first
@@ -100,7 +99,7 @@ const checkForWin = function (player, playerTiles) {
   // for loop to loop through winning array and check for wins
   for (let i = 0; i < winningCombinations.length; i += 1) {
     const currentCombo = winningCombinations[i]
-    let winCombo = []
+    const winCombo = []
     playerTiles.forEach((index) => {
       if (currentCombo.indexOf(index) > -1) {
         if (winCombo.indexOf(index) === -1) {
@@ -110,7 +109,7 @@ const checkForWin = function (player, playerTiles) {
     })
     // if loops find count of 3 playerTiles that matches winning array to find win
     if (winCombo.length === 3) {
-      declareAndLogWinner(player, currentCombo)
+      declareAndLogWinner(player, winCombo)
       gameOver = true // added to tell server game state and used to stop loops
       return false  // breaks/stop loop after win.
     }
@@ -154,7 +153,6 @@ const setUpGameBoard = function () {
     element.addEventListener('click', updateCell)
   }
 }
-
 const updateCell = function () {
   if (gameOver) {
     $('#game-over').modal('show')
@@ -168,12 +166,14 @@ const updateCell = function () {
   const index = parseInt(index1[1])
   // usedTiles and push the index of moves to array (total moves)
   // this will check if the tile that player click doesn't exist
-  if (playerArray[currentPlayer].indexOf(index) === -1) {
+  // checks if the tile is already in used with the usedtiles array
+  if (usedTiles.indexOf(index) === -1) {
     usedTiles.push(index)
     playerArray[currentPlayer].push(index)
     checkForWin(currentPlayer, playerArray[currentPlayer])
   // Check for used tiles here and restart the game
   }
+  return false
 }
 const addHandlers = () => {
   $('.btn').on('click', startNewGame)
