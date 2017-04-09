@@ -93,7 +93,7 @@ const currentTurn = function () {
 const checkForWin = function (player, playerTiles) {
 // 'if' statement to stop the wins/draw if game is over
   if (gameOver === true) {
-    alert('Game is over') // NEED TO CHANGE THIS ***********
+    $('#new').modal('show')
     return
   }
   // for loop to loop through winning array and check for wins
