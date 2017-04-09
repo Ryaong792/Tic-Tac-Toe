@@ -140,6 +140,7 @@ const startNewGame = function () {
   playerArray = {[player1]: [], [player2]: []}
   gameOver = false
   $('.square').text('')
+  createGame()
   console.log(startNewGame)
 }
 
@@ -177,7 +178,6 @@ const updateCell = function () {
 }
 const addHandlers = () => {
   $('.btn').on('click', startNewGame)
-  $('#create').on('click', createGame)
   $('.square').on('click', start)
   $('#reset').on('click', startNewGame)
 }
