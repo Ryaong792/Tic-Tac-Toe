@@ -84,7 +84,7 @@ const start = function () {
 // currentTurn function that works out who goes first
 const currentTurn = function () {
   currentPlayer = currentPlayer === player1 ? player2 : player1
-  // console.log(currentPlayer) been having issues with players not rotating
+  // been having issues with players not rotating
   return currentPlayer
 }
 
@@ -143,7 +143,6 @@ const startNewGame = function () {
   gameOver = false
   $('.square').text('')
   createGame()
-  console.log(startNewGame)
 }
 
 const nyan = function () {
@@ -152,7 +151,6 @@ const nyan = function () {
 // *********** Game board setup tracks clicks to index and add
 // to Players Arrays
 const setUpGameBoard = function () {
-  console.log('setUpGameBoard ran!')
   for (let i = 0; i < gameCellIds.length; i++) {
     const elementID = gameCellIds[i]
     const element = document.getElementById(elementID)
@@ -164,10 +162,7 @@ const updateCell = function () {
     $('#game-over').modal('show')
     return false
   }
-  // console.log(currentPlayer)
-  console.log('update cell this: ', this)
   const id = this.id
-  console.log('this element id = ' + id)
   const index1 = id.split('-')
   const index = parseInt(index1[1])
   // usedTiles and push the index of moves to array (total moves)

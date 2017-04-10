@@ -4,39 +4,31 @@ const store = require('../store')
 const game = require('../game/events.js')
 
 const signUpSuccess = (data) => {
-  console.log(data)
 }
 
-const signUpFailure = (error) => {
-  console.error(error)
+const signUpFailure = () => {
 }
 
 const signInSuccess = (response) => {
-  console.log('signIn success ran. data is :', response)
   store.user = response.user
   game.getGameOver()
 }
 
-const signInFailure = (error) => {
-  console.log('signIn failure ran. error is :', error)
+const signInFailure = () => {
 }
 
 const signOutSuccess = () => {
-  console.log('signOut success ran. and nothing was returned')
   store.user = null
 }
 
-const signOutFailure = (error) => {
-  console.log('signOut failure ran. error is :', error)
+const signOutFailure = () => {
 }
 
 const changePasswordSuccess = () => {
-  console.log('changePassword success ran. and nothing was returned')
   store.user = null
 }
 
-const changePasswordFailure = (error) => {
-  console.log('changePassword failure ran. error is :', error)
+const changePasswordFailure = () => {
 }
 
 module.exports = {
