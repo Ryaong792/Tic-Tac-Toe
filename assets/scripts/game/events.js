@@ -136,7 +136,7 @@ const declareAndLogWinner = function (player, combo) {
 const startNewGame = function () {
   event.preventDefault()
   $('.modal').modal('hide')
-  $('#nyan').attr('src', 'assets/styles/music/nyan.mp3')
+  $('#nyan').attr('src', '../../nyan.mp3')
   currentPlayer = player1
   usedTiles = []
   playerArray = {[player1]: [], [player2]: []}
