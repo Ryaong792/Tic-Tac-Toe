@@ -19,9 +19,6 @@ header {
   height: 700px;
   text-align: center;
 }
-
-.playerx {
-}
 // X VS 0 title display for center column
 .x {
   color: $red-color;
@@ -56,7 +53,7 @@ header {
 }
 
 #draw {
-  background-image: url('http://media.giphy.com/media/sIIhZliB2McAo/giphy.gif')
+  background-image: url('http://media.giphy.com/media/sIIhZliB2McAo/giphy.gif');
 }
 
 #reset {
