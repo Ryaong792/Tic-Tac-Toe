@@ -12,80 +12,91 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg modal1" data-toggle="modal" data-target="#myModal">
+        Account Info
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Account Info</h4>
+            </div>
+            <div class="modal-body">
+              <!-- **** API Server LOGIN **** -->
+                  <!-- start of Change password -->
+                  <div class="form-group">
+                  <form id="sign-up">
+                      <fieldset>
+                        <legend>SIGN UP</legend>
+                        <input type="text" name="credentials[email]" id="sign-up-email" placeholder="Enter your email">
+                        <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password">
+                        <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Aga">
+                        <input type="submit" name="submit" value="Sign up!">
+                      </fieldset>
+                    </form>
+                  </div>
+                  <!-- start of SignIN -->
+                  <div class="form-group">
+                    <form id="sign-in">
+                      <fieldset>
+                        <legend>SIGN IN</legend>
+                        <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Enter your Email">
+                        <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password">
+                        <input type="submit" name="submit" value="Sign in!">
+                      </fieldset>
+                    </form>
+                  </div>
+                    <!-- start of signOUT-->
+                  <div class="form-group">
+                    <form id="sign-out">
+                      <fieldset>
+                        <legend>SignOut</legend>
+                        <input type="submit" name="submit" value="Sign out!">
+                      </fieldset>
+                    </form>
+                  </div>
+                  <!-- start of Change password -->
+                  <div class="form-group">
+                    <form id="change-password">
+                      <fieldset>
+                        <legend>CHANGE PASSWORD</legend>
+                        <input type="text" name="passwords[old]" id="change-password-old" placeholder="Old Password">
+                        <input type="password" name="passwords[new]" id="change-password-new" placeholder="New Password">
+                        <input type="submit" name="submit" value="Change Password!">
+                      </fieldset>
+                    </form>
+                  </div>
+            </div>
+            <!-- **** End of body modal **** -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+<!-- **** END Server Modal for login **** -->
+
+<!-- START OF HEADER AREA WHERE TIC TAC TOE TITLE -->
 <div class="col-xs-12 top">
 <header class="title">Tic Tac Toe </header>
-
-
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" class="modal1">
-  Account Info
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Account Info</h4>
-      </div>
-      <div class="modal-body">
-        <!--*******************API LOGIN*********************** -->
-
-        <form id="sign-up">
-                <fieldset>
-                  <legend>SIGN UP</legend>
-                  <input type="text" name="credentials[email]" id="sign-up-email" placeholder="Enter your email">
-                  <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password">
-                  <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Aga">
-                  <input type="submit" name="submit" value="Sign up!">
-                </fieldset>
-              </form>
-
-              <form id="sign-in">
-                <fieldset>
-                  <legend>SIGN IN</legend>
-                  <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Enter your Email">
-                  <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password">
-                  <input type="submit" name="submit" value="Sign in!">
-                </fieldset>
-              </form>
-
-              <form id="sign-out">
-                <fieldset>
-                  <legend>SignOut</legend>
-                  <input type="submit" name="submit" value="Sign out!">
-                </fieldset>
-              </form>
-
-              <form id="change-password">
-                <fieldset>
-                  <legend>CHANGE PASSWORD</legend>
-                  <input type="text" name="passwords[old]" id="change-password-old" placeholder="Old Password">
-                  <input type="password" name="passwords[new]" id="change-password-new" placeholder="New Password">
-                  <input type="submit" name="submit" value="Change Password!">
-                </fieldset>
-              </form
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-
-
-
-
 <div class="col-xs-4 col-lg-4 columns playerx">
   Player X
+  <!-- stats -->
+  <div class="stats1">
+  Total game played
+  <div class="stats">
+  </div>
+  </div>
 </div>
 
 <div class="col-xs-4 col-lg-4 columns">
-  <div class="stats">test
-  </div>
   <span class="x"> X </span> <span class="v">V.S </span><span class="o">O</span>
   <!-- winner modals -->
       <div id="winnerX" class="modal fade">
@@ -114,7 +125,10 @@
       </div>
       <div id="draw" class="modal fade">
         <div class="modal-dialog">
-          <div class="modal-content">
+          <div class="modal-content nyan">
+              <audio id="nyan">
+                <source src="assets/styles/music/nyan.mp3" type="audio/mpeg">
+                </audio>
             <h2 class="text-center cool">
               Game is Draw
             </h2>
@@ -148,7 +162,7 @@
 <div class="square sq8" id="box-7"></div>
 <div class="square sq9" id="box-8"></div>
 </div>
-<button type="button" id="reset">NEW GAME!</button>
+<button type="button" id="reset">REST</button>
 </div>
 
 <div class="col-xs-4 col-lg-4 columns playero">

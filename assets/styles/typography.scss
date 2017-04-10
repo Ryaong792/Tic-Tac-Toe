@@ -21,8 +21,6 @@ header {
 }
 
 .playerx {
-  background-color: $red-color;
-  opacity: .5;
 }
 // X VS 0 title display for center column
 .x {
@@ -43,16 +41,28 @@ header {
   text-decoration: underline;
 }
 
+.stats {
+  font-size: 50px;
+}
 
+.stats1 {
+  font-size: 50px;
+}
 
-.playero {
-  background-color: $blue-color;
-  opacity: .5;
+.nyan {
+  background-color: $black-color;
+  color: $white-color;
+  opacity: .7;
+}
+
+#draw {
+  background-image: url('http://media.giphy.com/media/sIIhZliB2McAo/giphy.gif')
 }
 
 #reset {
   background-color: $black-color;
-  height: 10%;
-  width: 20%;
   font-size: 20px;
+  height: 5%;
+  margin: 0 auto;
+  width: 30%;
 }

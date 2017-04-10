@@ -116,6 +116,7 @@ const checkForWin = function (player, playerTiles) {
   }
   if (usedTiles.length === 9) {
     $('#draw').modal('show')
+    $('#nyan')[0].play()
     gameOver = true
     return false
   }
@@ -135,6 +136,7 @@ const declareAndLogWinner = function (player, combo) {
 const startNewGame = function () {
   event.preventDefault()
   $('.modal').modal('hide')
+  $('#nyan').attr('src', 'assets/styles/music/nyan.mp3')
   currentPlayer = player1
   usedTiles = []
   playerArray = {[player1]: [], [player2]: []}
@@ -144,6 +146,9 @@ const startNewGame = function () {
   console.log(startNewGame)
 }
 
+const nyan = function () {
+  $('#nyan').attr('src', '')
+}
 // *********** Game board setup tracks clicks to index and add
 // to Players Arrays
 const setUpGameBoard = function () {
@@ -176,10 +181,13 @@ const updateCell = function () {
   }
   return false
 }
+
 const addHandlers = () => {
   $('.btn').on('click', startNewGame)
   $('.square').on('click', start)
   $('#reset').on('click', startNewGame)
+  $('.btn').on('click', nyan)
+  $('#reset').on('click', nyan)
 }
 module.exports = {
   addHandlers,
