@@ -5,7 +5,6 @@ const store = require('../store')
 
 // creation of game to AJAX -
 const createGame = () => {
-  // console.log('created the game')
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'POST',
@@ -18,7 +17,6 @@ const createGame = () => {
 // updating game t
 
 const updateGame = (data) => {
-  console.log('updateGame. store is :', store)
   const game = store.game
   return $.ajax({
     url: config.apiOrigin + '/games/' + game.id,
@@ -31,7 +29,6 @@ const updateGame = (data) => {
 }
 
 const getGameOver = (data) => {
-  console.log('updateGame. store is :', store)
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'GET',
