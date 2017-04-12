@@ -180,9 +180,7 @@ const updateCell = function () {
 const addHandlers = () => {
   $('.btn').on('click', startNewGame)
   $('.square').on('click', start)
-  $('#reset').on('click', startNewGame)
   $('.btn').on('click', nyan)
-  $('#reset').on('click', nyan)
 }
 module.exports = {
   addHandlers,
