@@ -142,7 +142,11 @@ const startNewGame = function () {
   playerArray = {[player1]: [], [player2]: []}
   gameOver = false
   $('.square').text('')
-  createGame()
+  setTimeout(createGame, 500)
+  setTimeout(getGameOver, 600)
+  // createGame()
+  // getGameOver()
+  return false
 }
 
 const nyan = function () {
@@ -178,11 +182,12 @@ const updateCell = function () {
 }
 
 const addHandlers = () => {
-  $('.btn').on('click', startNewGame)
+  $('.newgame').on('click', startNewGame)
   $('.square').on('click', start)
-  $('#reset').on('click', startNewGame)
-  $('.btn').on('click', nyan)
-  $('#reset').on('click', nyan)
+  $('.newgame').on('click', nyan)
+  $('.board').hide()
+  $('#sign-out').hide()
+  $('#change-password').hide()
 }
 module.exports = {
   addHandlers,
