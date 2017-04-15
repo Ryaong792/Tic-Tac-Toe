@@ -27,6 +27,7 @@ const signOutSuccess = () => {
   $('#sign-up').show()
   $('#sign-in').show()
   $('#sign-out').hide()
+  $('.stats').text('')
   $('#change-password').hide()
   $('.board').hide()
 }
