@@ -67,10 +67,10 @@ const changePasswordSuccess = () => {
   $('.stats').text('')
   $('#change-password').hide()
   $('.board').hide()
-  $('.success').show().text('Password has been change successfully! Please Sign in with your new password to play!')
+  $('.success').show().text('Password has been change successfully! Please Sign in again with your new password to play!')
   setTimeout(function () {
     $('.success').fadeOut().empty()
-  }, 6000)
+  }, 7000)
   return false
 }
 
