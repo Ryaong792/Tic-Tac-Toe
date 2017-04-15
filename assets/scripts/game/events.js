@@ -185,6 +185,9 @@ const addHandlers = () => {
   $('.newgame').on('click', startNewGame)
   $('.square').on('click', start)
   $('.newgame').on('click', nyan)
+  $('.board').hide()
+  $('#sign-out').hide()
+  $('#change-password').hide()
 }
 module.exports = {
   addHandlers,
