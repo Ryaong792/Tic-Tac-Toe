@@ -4,9 +4,19 @@ const store = require('../store')
 const game = require('../game/events.js')
 
 const signUpSuccess = (data) => {
+  $('.success').show().text('Account has been created successfully.  Please sign-in to play!')
+  setTimeout(function () {
+    $('.success').fadeOut().empty()
+  }, 5000)
+  return false
 }
 
 const signUpFailure = () => {
+  $('.failure').show().text('Account creation failed.  Email may already be in used or passwords did not match.  Please try again!')
+  setTimeout(function () {
+    $('.failure').fadeOut().text('')
+  }, 7000)
+  return false
 }
 
 const signInSuccess = (response) => {
@@ -17,9 +27,19 @@ const signInSuccess = (response) => {
   $('.board').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
+  $('.success').show().text('Sign-in Successful! Enjoy your game!')
+  setTimeout(function () {
+    $('.success').fadeOut().empty()
+  }, 5000)
+  return false
 }
 
 const signInFailure = () => {
+  $('.failure').show().text('Email or passowrd is incorrect! Please try again!')
+  setTimeout(function () {
+    $('.failure').fadeOut().text('')
+  }, 6000)
+  return false
 }
 
 const signOutSuccess = () => {
@@ -30,6 +50,10 @@ const signOutSuccess = () => {
   $('.stats').text('')
   $('#change-password').hide()
   $('.board').hide()
+  $('.success').show().text('You have successfully signed-out! Please sign-in to play again!')
+  setTimeout(function () {
+    $('.success').fadeOut().empty()
+  }, 5000)
 }
 
 const signOutFailure = () => {
@@ -37,9 +61,25 @@ const signOutFailure = () => {
 
 const changePasswordSuccess = () => {
   store.user = null
+  $('#sign-up').show()
+  $('#sign-in').show()
+  $('#sign-out').hide()
+  $('.stats').text('')
+  $('#change-password').hide()
+  $('.board').hide()
+  $('.success').show().text('Password has been change successfully! Please Sign in with your new password to play!')
+  setTimeout(function () {
+    $('.success').fadeOut().empty()
+  }, 6000)
+  return false
 }
 
 const changePasswordFailure = () => {
+  $('.failure').show().text('Failed to change password! Old Password did not match! Please try again!')
+  setTimeout(function () {
+    $('.failure').fadeOut().text('')
+  }, 6000)
+  return false
 }
 
 module.exports = {

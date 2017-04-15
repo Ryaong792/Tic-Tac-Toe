@@ -63,3 +63,11 @@ header {
   margin: 0 auto;
   width: 30%;
 }
+
+.success {
+  background-color: $green-color;
+}
+
+.failure {
+  background-color: $red-fail;
+}
