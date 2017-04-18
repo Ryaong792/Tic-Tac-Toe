@@ -8,6 +8,7 @@ const signUpSuccess = (data) => {
   setTimeout(function () {
     $('.success').fadeOut().empty()
   }, 5000)
+  $('#sign-up').trigger('reset')
   return false
 }
 
@@ -16,6 +17,7 @@ const signUpFailure = () => {
   setTimeout(function () {
     $('.failure').fadeOut().text('')
   }, 7000)
+  $('#sign-up').trigger('reset')
   return false
 }
 
@@ -31,6 +33,7 @@ const signInSuccess = (response) => {
   setTimeout(function () {
     $('.success').fadeOut().empty()
   }, 5000)
+  $('#sign-in').trigger('reset')
   return false
 }
 
@@ -39,6 +42,7 @@ const signInFailure = () => {
   setTimeout(function () {
     $('.failure').fadeOut().text('')
   }, 6000)
+  $('#sign-in').trigger('reset')
   return false
 }
 
@@ -71,6 +75,7 @@ const changePasswordSuccess = () => {
   setTimeout(function () {
     $('.success').fadeOut().empty()
   }, 7000)
+  $('#change-password').trigger('reset')
   return false
 }
 
@@ -79,6 +84,7 @@ const changePasswordFailure = () => {
   setTimeout(function () {
     $('.failure').fadeOut().text('')
   }, 6000)
+  $('#change-password').trigger('reset')
   return false
 }
 
