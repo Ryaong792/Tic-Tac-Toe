@@ -34,6 +34,7 @@ const signInSuccess = (response) => {
     $('.success').fadeOut().empty()
   }, 5000)
   $('#sign-in').trigger('reset')
+  game.createGame()
   return false
 }
 

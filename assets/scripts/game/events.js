@@ -192,5 +192,6 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
   setUpGameBoard,
-  getGameOver
+  getGameOver,
+  createGame
 }

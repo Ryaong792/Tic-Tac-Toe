@@ -19,7 +19,7 @@ const createGame = () => {
 const updateGame = (data) => {
   const game = store.game
   return $.ajax({
-    url: config.apiOrigin + '/games/' + game.id,
+    url: config.apiOrigin + '/games/' + game['id'],
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
