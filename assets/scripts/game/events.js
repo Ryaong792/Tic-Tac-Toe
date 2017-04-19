@@ -144,8 +144,6 @@ const startNewGame = function () {
   $('.square').text('')
   setTimeout(createGame, 500)
   setTimeout(getGameOver, 600)
-  // createGame()
-  // getGameOver()
   return false
 }
 
@@ -181,6 +179,14 @@ const updateCell = function () {
   return false
 }
 
+const resetGame = function () {
+  currentPlayer = player1
+  usedTiles = []
+  playerArray = {[player1]: [], [player2]: []}
+  gameOver = false
+  $('.square').text('')
+  return false
+}
 const addHandlers = () => {
   $('.newgame').on('click', startNewGame)
   $('.square').on('click', start)
@@ -193,5 +199,6 @@ module.exports = {
   addHandlers,
   setUpGameBoard,
   getGameOver,
-  createGame
+  createGame,
+  resetGame
 }

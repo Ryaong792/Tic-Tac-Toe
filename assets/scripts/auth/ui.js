@@ -23,7 +23,6 @@ const signUpFailure = () => {
 
 const signInSuccess = (response) => {
   store.user = response.user
-  game.getGameOver()
   $('#sign-out').show()
   $('#change-password').show()
   $('.board').show()
@@ -35,6 +34,7 @@ const signInSuccess = (response) => {
   }, 5000)
   $('#sign-in').trigger('reset')
   game.createGame()
+  setTimeout(game.getGameOver(), 200)
   return false
 }
 
@@ -59,6 +59,7 @@ const signOutSuccess = () => {
   setTimeout(function () {
     $('.success').fadeOut().empty()
   }, 5000)
+  game.resetGame()
 }
 
 const signOutFailure = () => {
