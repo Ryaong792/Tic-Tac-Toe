@@ -9,7 +9,7 @@ const createGameFailure = (error) => {
   return error
 }
 const getGameSuccess = (data) => {
-  store.game = data.games
+  store.games = data.games
   $('.stats').text('Total games played ' + data.games.length)
 }
 
