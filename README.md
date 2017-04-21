@@ -3,37 +3,52 @@ Overview:
 
 Creation of a Tic-Tao-Toe game for our WDI project.   A simple game of Tic-Tac-Toe made to be a signal-page application using lessons we learned since we started WDI.
 
-Users stories
-•	Users most be able to use accounts by signing up, login, signing out, & change password
-•	Uses should be able to play tic-tic-tac toe with another player
-•	Users should be notified on who won the match
-•	Users should be able to start a new game after a match end
+Users stories:
+
+•	Users most be able to use accounts by signing up, login, signing out, & change password.
+
+•	Uses should be able to play tic-tic-tac toe with another player.
+
+•	Users should be notified on who won the match.
+
+•	Users should be able to start a new game after a match end.
+
 •	User that log in first when playing will always be “X” aka player 1.
 
 
-Wireframes
+Wireframes:
 Link:https://github.com/Ryaong792/Tic-Tac-Toe/blob/master/wireframe.jpg
 
-Tic Tac Toe
+Tic Tac Toe:
 https://ryaong792.github.io/Tic-Tac-Toe/index.html
 
 Technologies:
+
 •	jQuery
+
 •	JavaScript
+
 •	AJEX/API
+
 •	Github
 
 Approach:
+
 •	I started off with a general outline of what I wanted to game to look like via wireframe.
+
 •	Next I started to structure my HTML file with a general layout base on my sketch and
 created a main board for the game.
+
 •	After the general layout I started to the game logic.  Getting X and O to show when click etc.
+
 •	Once HTML/CSS/JS was put there together started the AJAX.
+
 •	I started with the account info first – user creation, signup, sign-out, and new password.
 
 
 
 Challenges
+
 •	I thought I had a pretty good feel on what I wanted the site to look like and since I was
 more comfortable with HTLM/CSS.  Then reality hit.  The site seems to busy; the layout was wrong and the feel was off.  I strip down most of the ideas I had since it was just too much for what it should be.
 
