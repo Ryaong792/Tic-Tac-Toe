@@ -12,7 +12,10 @@ Users stories
 
 
 Wireframes
-See link for wireframes - Link: Wireframe for Tic-Tac-Toe
+Link:https://github.com/Ryaong792/Tic-Tac-Toe/blob/master/wireframe.jpg
+
+Tic Tac Toe
+https://ryaong792.github.io/Tic-Tac-Toe/index.html
 
 Technologies:
 •	jQuery
@@ -33,12 +36,16 @@ created a main board for the game.
 Challenges
 •	I thought I had a pretty good feel on what I wanted the site to look like and since I was
 more comfortable with HTLM/CSS.  Then reality hit.  The site seems to busy; the layout was wrong and the feel was off.  I strip down most of the ideas I had since it was just too much for what it should be.
-•	The logic was the next big hurdle.   The WDI program is a fast past environment for learning code.  I have always struggle to get a solid base understanding and felt behind.
-Even with a lot of effort put in after class it was not a easy hurdle.  I spent a lot of time “trashing” on a problem due to this.  But the time spent for me looking up on how to fix it and getting over it felt good.
+
+•	The logic was the next big hurdle.   The WDI program is a fast past environment for learning code.  I have always struggle to get a solid base understanding and felt behind.Even with a lot of effort put in after class it was not a easy hurdle.  I spent a lot of time “trashing” on a problem due to this.  But the time spent for me looking up on how to fix it and getting over it felt good.
+
 •	Next come the issue with planning my code.  Though I had the wireframe code that I thought I would make, I ended not following it at all.  I was all over the place and felt like
 each code I put in broke then I would spend hours reading up and attempting to fix it.
+
 •	At this stage work/school life balance was off.  I usually stayed up till 11:30 to 12:00 am reviewing but when project time started I notice I was sleeping at 2 to 3am. This really affected me mental and felt drain.  I needed to break this habit (that being said while I type this as 3:00 AM)
+
 •	Jquery – finding fixes with jquery seem ideal at first. It seems that I can fix an issue with a signal line s seems like a shortcut for most case to fit my needs. Now the Rabbit hole. I end up looking for JQuery commands to solve most of my problems. This actually did not make it easier but harder in most case since I had a hard time finding where I can introduce now code to fix or add to an area I went over with it.
+
 •	The API was another big challenge.  Not really paying attention on the game API when I started was not a good idea, I was already near the end and I had to tailor most of my things to attempt to make sure it communicated properly. Since my mind set was get a working game and get everything else working after.
 
 Final Thoughts:
