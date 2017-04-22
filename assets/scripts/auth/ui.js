@@ -78,6 +78,7 @@ const changePasswordSuccess = () => {
     $('.success').fadeOut().empty()
   }, 7000)
   $('#change-password').trigger('reset')
+  game.resetGame()
   return false
 }
 
