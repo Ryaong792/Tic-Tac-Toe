@@ -142,8 +142,8 @@ const startNewGame = function () {
   playerArray = {[player1]: [], [player2]: []}
   gameOver = false
   $('.square').text('')
-  setTimeout(createGame, 500)
-  setTimeout(getGameOver, 600)
+  setTimeout(getGameOver, 500)
+  setTimeout(createGame, 600)
   return false
 }
 

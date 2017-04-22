@@ -33,8 +33,8 @@ const signInSuccess = (response) => {
     $('.success').fadeOut().empty()
   }, 5000)
   $('#sign-in').trigger('reset')
-  game.createGame()
-  setTimeout(game.getGameOver(), 200)
+  game.getGameOver()
+  setTimeout(game.createGame(), 200)
   return false
 }
 
